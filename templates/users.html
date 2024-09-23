@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Список пользоваетелей
+{% endblock %}
+
+{% block body %}
+<div class="container text-center border-bottom mb-5 pt-4">
+    <h1>Список пользоваетелей</h1>
+</div>
+<div class="container order-md-last">
+{% for user in users %}
+    <ul class="list-group mb-3">
+      <li class="list-group-item d-flex justify-content-between lh-sm">
+        <div class="text-truncate" style="max-width: 100%;">
+            <h6 class="my-0 d-block">{{ user.username }}</h6>
+            <small class="text-body-secondary">{{ user.email }}</small>
+            <small class="text-body-secondary text-truncate d-block">{{ user.password }}</small>
+        </div>
+      </li>
+    </ul>
+{% endfor %}
+  </div>
+
+{% for article in articles %}
+{{ article.title }}<br>
+{{ article.intro }}<br>
+{{ article.content|safe }}<br>
+{% endfor %}
+<div class="container d-flex mb-5 gap-3">
+    <a role="button" class="btn btn-custom-black" href="/verify/subscribe">Зарегистрироваться</a>
+    <a role="button" class="btn btn-custom-black" href="/verify/article">Создать статью</a>
+</div>
+
+{% endblock %}

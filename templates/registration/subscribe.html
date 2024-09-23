@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Ркгистрация
+{% endblock %}
+
+{% block body %}
+<div class="container text-center border-bottom mb-5 pt-4">
+    <h1>Регистрация</h1>
+</div>
+<div class="justify-content-center text-center container mb-5">
+    <form method="post" action="/verify/subscribe">
+        {{ form.hidden_tag() }}
+
+        {{ form.username.label }}<br>
+        {{ form.username }}<br>
+        {% if form.username.errors %}
+            <ul>
+                {% for error in form.username.errors %}
+                    <li style="color: red;">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.email.label }}<br>
+        {{ form.email }}<br>
+            {% if form.email.errors %}
+            <ul>
+                {% for error in form.email.errors %}
+                    <li style="color: red;">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.password.label }}<br>
+        {{ form.password }}<br>
+        {{ form.password2.label }}<br>
+        {{ form.password2 }}<br>
+            {% if form.password2.errors %}
+            <ul>
+                {% for error in form.password2.errors %}
+                    <li style="color: red;">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="mb-3"></div>
+        <input class="btn btn-custom-black" id="button" name="button" type="submit" value="Зарегистрироваться">
+        <!-- {{ form.button }} -->
+    </form>
+</div>
+{% endblock %}

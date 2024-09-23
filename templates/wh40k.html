@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Warhammer 40000
+{% endblock %}
+
+{% block body %}
+<!-- main -->
+    <div class="mb-5"></div>
+    <div class="container mb-5">
+        <div class="image-title text-center">
+            <img class="img-fluid image-title2" src="{{ url_for('static', filename='media/gallery/Imperator-Rex.png') }}" style="height: auto; width: 50%; object-fit: cover; position: relative;" alt="">
+        </div>
+        <div class="text-center justify-content-center border-bottom">
+            <h1 class="display-2 text-black w-100">Warhammer 40.000</h1>
+        </div>
+    </div>
+    <div class="bg-secondary" style="padding-top: 10px; padding-bottom: 10px;">
+        <div class="container text-center px-5">
+            <h3 class="text-white">Warhammer 40000</h3>
+        </div>
+    </div>
+    <div class="container mb-5">
+        <div class="row d-flex">
+            <div class="col-3 d-flex flex-column align-items-center">
+                <img class="mb-2" src="{{ url_for('static', filename='media/icons/munitorum_fm.png') }}">
+                <a role="button" class="btn btn-warning" href="https://www.warhammer-community.com/wp-content/uploads/2023/06/WiWKjMceLJgzasvJ.pdf" target="_blank">Скачать</a>
+            </div>
+            <div class="col-3 d-flex flex-column align-items-center">
+                <img class="mb-2" src="{{ url_for('static', filename='media/icons/pariah_nexus.png') }}">
+                <a role="button" class="btn btn-warning" href="https://www.warhammer-community.com/wp-content/uploads/2024/06/MxYWfHN4INbOH6l1.pdf" target="_blank">Скачать</a>
+            </div>
+            <div class="col-3 d-flex flex-column align-items-center">
+                <img class="mb-2" src="{{ url_for('static', filename='media/icons/cr_updates.png') }}">
+                <a role="button" class="btn btn-warning" href="https://www.warhammer-community.com/wp-content/uploads/2023/06/bQTWEw8T9k5dy4Eq.pdf" target="_blank">Скачать</a>
+            </div>
+            <div class="col-3 d-flex flex-column align-items-center">
+                <img class="mb-2" src="{{ url_for('static', filename='media/icons/balance_dataslate.png') }}">
+                <a role="button" class="btn btn-warning" href="https://www.warhammer-community.com/wp-content/uploads/2023/09/ny8X1C4lLKnA8w5d.pdf" target="_blank">Скачать</a>
+            </div>
+            <div class="col-3 d-flex flex-column align-items-center">
+                <img class="mb-2" src="{{ url_for('static', filename='media/icons/quick_start.png') }}">
+                <a role="button" class="btn btn-warning" href="https://www.warhammer-community.com/wp-content/uploads/2023/06/76CPCqo7msJIHqzx.pdf" target="_blank">Скачать</a>
+            </div>
+            <div class="col-3 d-flex flex-column align-items-center">
+                <img class="mb-2" src="{{ url_for('static', filename='media/icons/core_rules.png') }}">
+                <a role="button" class="btn btn-warning" href="https://www.warhammer-community.com/wp-content/uploads/2023/06/dLZIlatQJ3qOkGP7.pdf" target="_blank">Скачать</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

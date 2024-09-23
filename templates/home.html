@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block body %}
+ <!-- carousel -->
+    <div id="myCarousel" class="carousel slide carousel-fade mb-5" data-bs-ride="carousel">
+            <!--inner-->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ url_for('static', filename='media/gallery/wh40k_splash.jpg') }}" class="d-block w-100 flip-image" alt="">
+                    <!--content-->
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 mx-auto text-start">
+                                    <h5 class="display-3 fw-bold">Warhammer<br> 40000</h5>
+                                    <p>В мрачной тьме далекого будущего есть только война.</p>
+                                    <a href="/wh40k" role="button" class="btn btn-outline-warning">Перейти</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='media/gallery/aos_splash.jpg') }}" class="d-block w-100 flip-image">
+                    <!--content-->
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 mx-auto text-start">
+                                    <h5 class="display-3 fw-bold">Warhammer:<br> Age of Sigmar</h5>
+                                    <p>Время смут, эпоха войны</p>
+                                    <a href="/whaos" role="button" class="btn btn-outline-warning">Перейти</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- buttons -->
+             <div class="carousel-control">
+                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+             </div>
+    </div>
+<!-- codexes -->
+    <div class="container mb-5">
+        <div class="rounded-5">
+            <a href="/codexes" class="jumbo-link d-block text-decoration-none">
+                <div class="jumbo text-center rounded-5">
+                    <img src="{{ url_for('static', filename='media/gallery/codex_splash.png') }}" class="image-bottom img-fluid" style="height: auto; width: 120%; object-fit: cover; position: relative; margin-top: -50px;" alt="">
+                    <h1 class="image-logo text-light display-2 fw-bold">Кодексы</h1>
+                </div>
+            </a>
+        </div>
+    </div>
+<!-- BL -->
+    <div class="container mb-5">
+        <div class="rounded-5">
+            <a href="/bl" class="jumbo-link d-block text-decoration-none">
+                <div class="jumbo text-center rounded-5">
+                    <img src="{{ url_for('static', filename='media/gallery/bl_splash.jpg') }}" class="image-bottom img-fluid" style="height: auto; width: 120%; object-fit: cover; margin-top: -150px;">
+                    <img src="{{ url_for('static', filename='media/icons/bl_logo_white.png') }}" class="image-logo">
+                </div>
+            </a>
+        </div>
+    </div>
+<!-- gallery -->
+    <div class="container mb-5">
+        <div class="rounded-5">
+            <a href="/gallery" class="jumbo-link d-block text-decorations-none">
+                <div class="jumbo text-center rounded-5">
+                    <img src="{{ url_for('static', filename='media/gallery/gallery_splash.png') }}" class="image-bottom img-fluid" style="height: auto; width: 120%; object-fit: cover; position: relative; margin-top: -200px;" alt="">
+                    <h1 class="image-logo text-light display-2 fw-bold">Галерея</h1>
+                </div>
+            </a>
+        </div>
+    </div>    
+{% endblock %}
+
+{% block carousel %}
+<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+{% endblock %}
+
+
+<!--  -->

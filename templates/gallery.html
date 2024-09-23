@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Галерея
+{% endblock %}
+
+{% block body %}
+<div class="mb-5"></div>
+<div class="container mb-5">
+    <div class="image-title text-center">
+        <img class="img-fluid image-title2" src="{{ url_for('static', filename='media/gallery/gallery.jpg') }}" style="height: auto; width: 50%; object-fit: cover; position: relative;" alt="">
+    </div>
+    <div class="text-center justify-content-center border-bottom">
+        <h1 class="display-2 text-black w-100">Галерея</h1>
+    </div>
+</div>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for file in files %}
+        <div class="col">
+            <div class="card shadow-sm">
+                <img class="img-fluid" src="{{ url_for('gallery.uploaded_file', filename=file) }}">
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+</div>
+
+{% if current_user.is_authenticated %}
+<div class="container mb-4">
+    <a role="button" class="btn btn-custom-black" href="/gallery/upload">Загрузить файл</a>
+</div>
+{% else %}
+{% endif %}
+{% endblock %}

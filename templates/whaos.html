@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Warhammer Age of Sigmar
+{% endblock %}
+
+{% block body %}
+<!-- main -->
+<div class="mb-5"></div>
+<div class="container mb-5">
+    <div class="image-title text-center">
+        <img class="img-fluid image-title2" src="{{ url_for('static', filename='media/gallery/aos.jpg') }}" style="height: auto; width: 50%; object-fit: cover; position: relative;" alt="">
+    </div>
+    <div class="text-center justify-content-center border-bottom">
+        <h1 class="display-2 text-black w-100">Warhammer: Age of Sigmar</h1>
+    </div>
+</div>
+<div class="bg-secondary" style="padding-top: 10px; padding-bottom: 10px;">
+    <div class="container text-center px-5">
+        <h3 class="text-white">Warhammer: Age of Sigmar</h3>
+    </div>
+</div>
+<div class="container mb-5">
+    <div class="row d-flex">
+        <div class="col-3 d-flex flex-column align-items-center">
+            <img class="mb-2" src="{{ url_for('static', filename='media/icons/rules.png') }}">
+            <a role="button" class="btn btn-warning" href="https://www.warhammer-community.com/wp-content/uploads/2024/07/Kt8xp1Le3rGPXvy3.pdf" target="_blank">Скачать</a>
+        </div>
+        <div class="col-3 d-flex flex-column align-items-center">
+            <img class="mb-2" src="{{ url_for('static', filename='media/icons/quickstart_aos.png') }}">
+            <a role="button" class="btn btn-warning" href="https://www.warhammer-community.com/wp-content/uploads/2024/07/GO49bo7eHHGDyq9F.pdf" target="_blank">Скачать</a>
+        </div>
+        <div class="col-3 d-flex flex-column align-items-center">
+            <img class="mb-2" src="{{ url_for('static', filename='media/icons/spearhead.png') }}">
+            <a role="button" class="btn btn-warning" href="https://www.warhammer-community.com/wp-content/uploads/2024/07/jGK80Jjjq4u0PaSR.pdf" target="_blank">Скачать</a>
+        </div>
+        <div class="col-3 d-flex flex-column align-items-center">
+            <img class="mb-2" src="{{ url_for('static', filename='media/icons/glossary.png') }}">
+            <a role="button" class="btn btn-warning" href="https://www.warhammer-community.com/wp-content/uploads/2024/07/8I69xayImjXJA5h8.pdf" target="_blank">Скачать</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
