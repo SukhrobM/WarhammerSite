@@ -16,7 +16,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///wh.db'
 app.config['SQLALCHEMY_DATABASE_MODIFICATIONS'] = False
 app.config['CSRF_KEYS'] = True
-app.config['SECRET_KEY'] = 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IjVUZWFNNlVuSyIsImlhdCI6MTUxNjIzOTAyMn0'
+app.config['SECRET_KEY'] = ''
 
 db.init_app(app)
 login_manager.init_app(app)
