@@ -2,8 +2,7 @@ import os.path
 
 from werkzeug.utils import secure_filename
 
-from flask import Blueprint, render_template, request, current_app, send_from_directory, flash, redirect, url_for, \
-    jsonify
+from flask import Blueprint, render_template, request, current_app, send_from_directory, flash, redirect
 from resourses.models import Articles
 
 
@@ -85,7 +84,9 @@ guides_bp = Blueprint('guides', __name__, url_prefix='/guides')
 
 @guides_bp.route('/')
 def guides():
-    return render_template('guides.html')
+    tag = 'Гайды'
+    articles = Articles.query.filter_by(tag=tag).all()
+    return render_template('guides.html', articles=articles)
 
 
 info_bp = Blueprint('info', __name__, url_prefix='/info')

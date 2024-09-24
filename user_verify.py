@@ -53,13 +53,15 @@ def user_login():
         if email and password:
             user = User.query.filter_by(email=email).first()
 
-            if check_password_hash(user.password, password):
+            if user is None:
+                flash('Такого пользователя не существует')
+                return render_template('registration/login.html', form=form)
+            elif check_password_hash(user.password, password):
                 login_user(user)
                 return redirect('/home')
             else:
                 flash('Неправильные email-адрес или пароль')
-        else:
-            flash('Заполните необходимые поля')
+                return render_template('registration/login.html', form=form)
     else:
         return render_template('registration/login.html', form=form)
 
