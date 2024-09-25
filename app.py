@@ -16,7 +16,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///wh.db'
 app.config['SQLALCHEMY_DATABASE_MODIFICATIONS'] = False
 app.config['CSRF_KEYS'] = True
-app.config['SECRET_KEY'] = ''
+app.config['SECRET_KEY'] = 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IjVUZWFNNlVuSyIsImlhdCI6MTUxNjIzOTAyMn0'
 
 db.init_app(app)
 login_manager.init_app(app)
@@ -38,4 +38,4 @@ if __name__ == '__main__':
         db.create_all()
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
-    app.run(debug=True)
+    app.run()
