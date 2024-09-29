@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Ркгистрация
+{% endblock %}
+
+{% block body %}
+<div class="container text-center border-bottom mb-5 pt-4">
+    <h1>Регистрация</h1>
+</div>
+<div class="d-flex align-items-center">
+    <main class="form-signing form-control py-4 px-3 m-auto mb-5 bg-secondary-subtle" style="max-width: 400px;">
+        <form method="post">
+            {{ form.hidden_tag() }}
+    
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                            <li style="color: red;">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+            <div class="form-floating">
+                {{ form.username(class="form-control mb-2", id="floatingUsername", placeholder="") }}
+                {% if form.username.errors %}
+                    <ul>
+                        {% for error in form.username.errors %}
+                            <li style="color: red;">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="floatingUsername">Введите ваше имя</label>
+            </div>
+
+            <div class="form-floating">
+                {{ form.email(class="form-control mb-2", id="floatEmail", placeholder="") }}
+                    {% if form.email.errors %}
+                    <ul>
+                        {% for error in form.email.errors %}
+                            <li style="color: red;">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="floatEmail">Введите ваш e-mail</label>
+            </div>
+
+            <div class="form-floating">
+                {{ form.password(class="form-control mb-2", id="floatPasswordi", placeholder="") }}
+                <label for="floatPasswordi">Введите пароль</label>
+            </div>
+
+            <div class="form-floating">
+                {{ form.password2(class="form-control mb-4", id="floatPasswordii", placeholder="") }}
+                {% if form.password2.errors %}
+                <ul>
+                    {% for error in form.password2.errors %}
+                        <li style="color: red;">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="floatPasswordii">Повторите пароль</label>
+            </div>
+
+            {{ form.button(class="btn btn-custom-black") }}
+        </form>
+    </main>
+</div>
+{% endblock %}

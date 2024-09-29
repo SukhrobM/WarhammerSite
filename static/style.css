@@ -106,7 +106,20 @@
 }
 
 .btn-custom-black:hover {
-    background-color: #333;
-    color: rgb(188, 188, 188);
+    background-color: #888888;
+    color: rgb(5, 5, 5);
     border: none;
+}
+
+.bg-custom-secondary {
+    background-color: #f2f2f2;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warhammer Tashkent | {% block title %}{% endblock %}</title>
+
     <meta name="description" content="Информационно-развлекательный портал для любителей вселенной Warhammer в Ташкенте!
                                       Новости комюнити, события, обучение и многое другое">
     <meta name="keyword" content="40k, warhammer, warhammer 40k, warhammer40k, aos, AoS, warhammerAoS, warhammer AoS
@@ -66,7 +67,7 @@
             <div class="row px-3">
                 <div class="image-container col-4 pt-2">
                     <a href="/" class="d-flex align-items-center d-auto text-decoration-none">
-                        <img src="{{ url_for('static', filename='media/icons/warhammer_logo.png') }}" class="img-fluid pb-3" style="width: 100%;" alt="">
+                        <img src="{{ url_for('static', filename='media/icons/warhammer_logo.png') }}" class="img-fluid pb-3" style="width: 100%;">
                     </a>
                 </div>
                 <div class="col-4"></div>
@@ -80,7 +81,7 @@
                         <h6 class="text-light">Войти</h6>
                     </a>
                     <p class="text-light pt-2">/</p>
-                    <a href="/verify/subscribe" class="link-underline link-underline-opacity-0 link-underline-opacity-0-hover">
+                    <a href="/verify/regis" class="link-underline link-underline-opacity-0 link-underline-opacity-0-hover">
                         <h6 class="text-light">Регистрация</h6>
                     </a>
                     {% endif %}
@@ -93,7 +94,7 @@
                 href="/wh40k">Warhammer 40K
             </a>
             <a class="nav-item nav-link link-body-emphasis link-underline link-underline-opacity-0 link-underline-opacity-0-hover"
-                href="/whaos">Wadhammer: AoS
+                href="/whaos">Warhammer: AoS
             </a>
             <a class="nav-item nav-link link-body-emphasis link-underline link-underline-opacity-0 link-underline-opacity-0-hover"
                 href="/bl">Black Library
@@ -192,7 +193,7 @@
             });
         });
     </script>
-    
+
     {% block init %}{% endblock %}
 </body>
 </html>

@@ -5,8 +5,6 @@
 {% endblock %}
 
 {% block script %}
-    <script src="https://cdn.tiny.cloud/1/6v0b5tm76cuv4y7togufy7hk6bjx6eb8jqcoz3c0niuhw80i/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-    <!-- <script src="{{ url_for('static', filename='ckeditor/ckeditor.js') }}"></script> -->
 {% endblock %}
 
 
@@ -14,76 +12,25 @@
 <div class="container text-center border-bottom mb-5 pt-4">
     <h1>Добавить статью</h1>
 </div>
-<div class="container mb-5">
-    <form method="post" enctype="multipart/form-data">
-        <label class="form-label" for="title">Заголовок</label>
-        <input class="form-control" type="text" name="title" id="title"><br>
-
-        <label class="form-label" for="intro">Краткое описание</label>
-        <input class="form-control" type="text" name="intro" id="intro"><br>
-
-        <label class="form-label" for="editor"></label>
-        <div class="container" >
-            <textarea id="editor" name="content"></textarea><br>
-        </div>
-
-        <label class="form-label" for="tag">Категория</label>
-        <input class="form-control mb-4" type="text" name="tag" id="tag">
-        <button class="btn btn-custom-black" type="submit">Сохранить</button>
-    </form>
+<div class="container d-flex align-items-center">
+    <main class="form-control py-4 px-3 m-auto mb-5 bg-secondary-subtle">
+        <form method="post" enctype="multipart/form-data">
+            {{ form.title(class="form-control mb-3") }}
+            {{ form.intro(class="form-control mb-3") }}
+            {{ form.content(id="editor") }}
+            <div class="mb-4"></div>
+            {{ form.tag(class="form-control mb-4") }}<br>
+            {{ form.button(class="btn btn-custom-black") }}
+        </form>
+        {{ ckeditor.load() }}
+        {{ ckeditor.config(name='content') }}
+    </main>
 </div>
 {% endblock %}
-{% block init %} 
-<!-- <script>
-    CKEDITOR.replace('editor', {
-        filebrowserUploadUrl: "{{ url_for('verify.upload_image') }}",
-        filebrowserUploadMethod: 'form'
-    });
-</script> -->
-<!-- <script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .catch(error => {
-            console.error(error);
-        });
-</script> -->
+{% block init %}
 <script>
-    tinymce.init({
-      selector: '#editor',
-      plugins: [
-        // Core editing features
-        'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
-        // Your account includes a free trial of TinyMCE premium features
-        // Try the most popular premium features until Oct 4, 2024:
-        'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown',
-      ],
-      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-      image_upload_url: "{{ url_for('verify.upload_image') }}",
-      automatic_uploads: true,
-      image_upload_handler: function (blobInfo, success, failure) {
-        var formData = new FormData();
-        formData.append('file', blobInfo.blob(), blobInfo.filename());
-
-        fetch("{{ url_for('verify.upload_image') }}", {
-            method: 'POST',
-            body: formatData,
-        })
-        .then(function(responce) {
-            return responce.json();
-        })
-        .then(function(json) {
-            success(json.location);
-        })
-        .catch(function(error) {
-            failure("Ошибка загрузки изображения " + error);
-        })
-      },
-      tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
-      mergetags_list: [
-        { value: 'First.Name', title: 'First Name' },
-        { value: 'Email', title: 'Email' },
-      ]
-    });
+    CKEDITOR.replace( 'editor', {
+    versionCheck: false
+} );
 </script>
 {% endblock %}

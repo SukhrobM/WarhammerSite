@@ -8,31 +8,47 @@
 <div class="container text-center border-bottom mb-5 pt-4">
     <h1>Вход в аккаунт</h1>
 </div>
-<div class="justify-content-center text-center container mb-5">
-    <form method="post" action="/verify/login">
-        {{ form.hidden_tag() }}
+<div class="d-flex align-items-center">
+    <main class="form-signing form-control py-4 px-3 m-auto mb-5 bg-secondary-subtle" style="max-width: 400px;">
+        <form method="post">
+            {{ form.hidden_tag() }}
 
-        <label class="form-label" for="email">Ваша эл. почта</label><br>
-        {{ form.email }}<br>
-        {% if form.email.errors %}
-            <ul>
-                {% for error in form.email.errors %}
-                    <li style="color: red;">{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <label class="form-label" for="email">Введите пароль</label><br>
-        {{ form.password }}<br>
-        {% if form.password.errors %}
-            <ul>
-                {% for error in form.password.errors %}
-                    <li style="color: red;">{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <div class="mb-3"></div>
-        <input class="btn btn-custom-black" id="button" name="button" type="submit" value="Войти">
-        <!-- {{ form.button }} -->
-    </form>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                            <li style="color: red;">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+            <div class="form-floating">
+                {{ form.email(class="form-control mb-2", id="floatingInput", placeholder="") }}
+                {% if form.email.errors %}
+                    <ul>
+                        {% for error in form.email.errors %}
+                            <li style="color: red;">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="floatingInput">Введите ваш e-mail</label>
+            </div>
+
+            <div class="form-floating">
+                {{ form.password(class="form-control mb-4", id="floatingPassword", placeholder="") }}
+                {% if form.password.errors %}
+                    <ul>
+                        {% for error in form.password.errors %}
+                            <li style="color: red;">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="floatingPassword">Введите ваш пароль</label>
+            </div>
+
+            {{ form.button(class="btn btn-custom-black") }}
+        </form>
+    </main>
 </div>
 {% endblock %}
