@@ -18,24 +18,22 @@ def users_db():
 def user_register():
     form = FormRegister()
     if request.method == 'POST' and form.validate_on_submit():
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data
 
         hashed_password = generate_password_hash(password)
-        users = User(username=username, email=email, password=hashed_password)
+        user = User(username=username, email=email, password=hashed_password)
 
         try:
-            db.session.add(users)
+            db.session.add(user)
             db.session.commit()
-            return redirect(url_for('home'))
-        except Exception:
+            login_user(user)
+            return redirect(url_for('home.home'))
+        except Exception as e:
             db.session.rollback()
-            flash('Произошла ошибка при регистрации')
+            flash(f'Произошла ошибка при регистрации: {str(e)}')
             return render_template('/registration/regis.html', form=form)
-        finally:
-            db.session.close()
-
     else:
         return render_template('registration/regis.html', form=form)
 
@@ -44,8 +42,8 @@ def user_register():
 def user_login():
     form = FormLogin()
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+        email = form.email.data
+        password = form.password.data
         if email and password:
             user = User.query.filter_by(email=email).first()
 
@@ -54,7 +52,7 @@ def user_login():
                 return render_template('registration/login.html', form=form)
             elif check_password_hash(user.password, password):
                 login_user(user)
-                return redirect(url_for('home'))
+                return redirect(url_for('home.home'))
             else:
                 flash('Неправильные email-адрес или пароль')
                 return render_template('registration/login.html', form=form)
@@ -66,4 +64,4 @@ def user_login():
 @login_required
 def user_logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('home.home'))

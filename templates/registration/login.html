@@ -13,24 +13,22 @@
         <form method="post">
             {{ form.hidden_tag() }}
 
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul class="flashes">
-                        {% for message in messages %}
-                            <li style="color: red;">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
+                {% for message in get_flashed_messages() %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
 
             <div class="form-floating">
                 {{ form.email(class="form-control mb-2", id="floatingInput", placeholder="") }}
                 {% if form.email.errors %}
-                    <ul>
-                        {% for error in form.email.errors %}
-                            <li style="color: red;">{{ error }}</li>
-                        {% endfor %}
-                    </ul>
+                    {% for error in form.email.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
                 {% endif %}
                 <label for="floatingInput">Введите ваш e-mail</label>
             </div>
@@ -38,11 +36,12 @@
             <div class="form-floating">
                 {{ form.password(class="form-control mb-4", id="floatingPassword", placeholder="") }}
                 {% if form.password.errors %}
-                    <ul>
-                        {% for error in form.password.errors %}
-                            <li style="color: red;">{{ error }}</li>
-                        {% endfor %}
-                    </ul>
+                    {% for error in form.password.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
                 {% endif %}
                 <label for="floatingPassword">Введите ваш пароль</label>
             </div>

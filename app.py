@@ -14,6 +14,7 @@ from api.guides.guide import guides_bp
 from api.info.info import info_bp
 from api.about.about import aboutus_bs
 from api.codex.codex import codex_bp
+from api.errorpage import error_bp
 
 
 app = Flask(__name__)
@@ -21,8 +22,9 @@ app = Flask(__name__)
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # app.config['MAX_CONTENT_LENGTH'] = 1024
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///wh.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///wh_data.db'
 app.config['SQLALCHEMY_DATABASE_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ECHO'] = True
 app.config['CSRF_KEYS'] = True
 app.config['SECRET_KEY'] = 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IjVUZWFNNlVuSyIsImlhdCI6MTUxNjIzOTAyMn0'
 
@@ -41,6 +43,7 @@ app.register_blueprint(guides_bp)
 app.register_blueprint(info_bp)
 app.register_blueprint(aboutus_bs)
 app.register_blueprint(codex_bp)
+app.register_blueprint(error_bp)
 
 
 if __name__ == '__main__':

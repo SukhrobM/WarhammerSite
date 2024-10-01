@@ -15,10 +15,22 @@
 <div class="container d-flex align-items-center">
     <main class="form-control py-4 px-3 m-auto mb-5 bg-secondary-subtle">
         <form method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+
+            {{ form.title.label(class="mb-2") }}
             {{ form.title(class="form-control mb-3") }}
+            {{ form.intro.label(class="mb-2") }}
             {{ form.intro(class="form-control mb-3") }}
             {{ form.content(id="editor") }}
             <div class="mb-4"></div>
+            {{ form.tag.label(class="mb-2") }}
             {{ form.tag(class="form-control mb-4") }}<br>
             {{ form.button(class="btn btn-custom-black") }}
         </form>

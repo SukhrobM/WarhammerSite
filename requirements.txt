@@ -5,3 +5,4 @@ sqlalchemy
 Flask_SQLAlchemy
 email-validator
 flask-login
+Werkzeug~=3.0.4
