@@ -33,3 +33,15 @@ class Articles(db.Model):
 
     def __repr__(self):
         return '<Article %r>' % self.id
+
+
+class Content(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False, unique=True)
+    web_link = db.Column(db.String, nullable=True)
+    icon_name = db.Column(db.String)
+    file_name = db.Column(db.String)
+    tag = db.Column(db.String)
+
+    def __repr__(self):
+        return '<Content %r>' % self.id

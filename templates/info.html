@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Полезная информация
+События
 {% endblock %}
 
 {% block body %}
@@ -15,9 +15,31 @@
     </div>
 </div>
 
-<div>
+<div class="mb-5">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+
     {% for article in articles %}
-    {{ article.title }}
+        <div class="container d-flex align-items-center px-5 mb-4">
+            <div class="form-control bg-secondary-subtle py-4 ps-5">
+                <div class="mb-2">
+                    <h1>{{ article.title }}</h1>
+                </div>
+                <div class="mb-3">
+                    {{ article.intro }}
+                </div>
+                <div class="mb-3"></div>
+                <a href="/article/{{article.id}}" class="btn btn-custom-black">Открыть</a>
+                {% if current_user.is_authenticated %}
+                    <a href="/article/edit/{{article.id}}" class="btn btn-custom-black">Редактировать</a>
+                    <a href="/article/delete/{{article.id}}" class="btn btn-outline-dark">Удалить</a>
+                {% endif %}
+            </div>
+        </div>
     {% endfor %}
 </div>
 {% endblock %}

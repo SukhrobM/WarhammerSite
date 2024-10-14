@@ -1,0 +1,107 @@
+<div>
+    <!-- Верхний навбар -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top py-1">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{{ url_for('static', filename='media/icons/warhammer_logo.png') }}" alt="Logo" class="img-fluid" style="width: 150px;">
+            </a>
+            <!-- Кнопка для раскрытия навбара на мобильных устройствах -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="/verify/logout" class="nav-link text-light">Выйти</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="/verify/login" class="nav-link text-light">Войти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/verify/regis" class="nav-link text-light">Регистрация</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#secondNavbar" aria-controls="secondNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="secondNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/wh40k">Warhammer 40K</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/whaos">Warhammer: AoS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/bl">Black Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/gallery">Галерея</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/guides">Гайды</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/info">События</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/about_us">О нас</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Второй навбар -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#secondNavbar" aria-controls="secondNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="secondNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/wh40k">Warhammer 40K</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/whaos">Warhammer: AoS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/bl">Black Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/gallery">Галерея</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/guides">Гайды</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/info">События</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis" href="/about_us">О нас</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
+<div class="col-4 justify-content-start pt-2 d-md-none">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" 
+    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" id="second-navbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>

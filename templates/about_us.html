@@ -14,10 +14,26 @@
         <h1 class="display-2 text-black w-100">О нас</h1>
     </div>
 </div>
-<div class="container px-5">
+
+<div>
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+
     {% for article in articles %}
-    {{ article.title }}
-    {{ article.content|safe }}
+        <div class="px-5">
+            <div class="form-control bg-secondary-subtle mx-5 px-3">
+                <h1>{{ article.title }}</h1><br>
+                <h3>{{ article.intro }}</h3>
+                <div class="mb-3"></div>
+                <a href="/article/{{article.id}}" class="btn btn-custom-black">Открыть</a>
+                <a href="/article/edit/{{article.id}}" class="btn btn-custom-black">Редактировать</a>
+                <a href="/article/delete/{{article.id}}" class="btn btn-custom-black">Удалить</a>
+            </div>
+        </div>
     {% endfor %}
 </div>
 {% endblock %}

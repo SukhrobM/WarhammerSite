@@ -1,7 +1,7 @@
 import os
 
 from flask import (Blueprint, render_template, current_app, send_from_directory,
-                   request, flash, redirect, url_for)
+                   request, flash)
 from werkzeug.utils import secure_filename
 
 
@@ -35,6 +35,6 @@ def upload_to_gallery():
     return render_template('upload.html')
 
 
-@gallery_bp.route('/uploads/<filename>')
+@gallery_bp.route('/upload/<filename>')
 def uploaded_file(filename):
     return send_from_directory(current_app.config['UPLOAD_FOLDER'], filename)

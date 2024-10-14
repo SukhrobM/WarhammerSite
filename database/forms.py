@@ -1,6 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Length, Regexp, Email, EqualTo, ValidationError
+from wtforms import (StringField, EmailField, PasswordField,
+                     SubmitField, SelectField, FileField)
+from wtforms.validators import (DataRequired, Length, Regexp, Email,
+                                EqualTo, ValidationError, Optional)
 from flask_ckeditor import CKEditorField
 from wtforms.widgets.core import TextArea
 
@@ -75,5 +77,28 @@ class ArticleForm(FlaskForm):
                         widget=TextArea()
                         )
     content = CKEditorField('Текст статьи')
-    tag = StringField('Категория', validators=[DataRequired()])
+    tag = SelectField('Категория', choices=[
+        ('wh40', 'Warhammer 40K'),
+        ('whaos', 'Warhammer: AoS'),
+        ('bl', 'Black Library'),
+        ('gallery', 'Галерея'),
+        ('guides', 'Гайды'),
+        ('events', 'События'),
+        ('about', 'О нас'),
+    ], validators=[DataRequired()])
+    button = SubmitField('Сохранить')
+
+
+class ContentForm(FlaskForm):
+    title = StringField("Введите название", validators=[DataRequired()])
+    image = FileField("Загрузить изображение", validators=[Optional()])
+    web_link = StringField("Введите ссылку", validators=[Optional()])
+    file = FileField("Загрузить файл", validators=[Optional()])
+    tag = SelectField("Категории", choices=[
+        ('wh40', 'Warhammer 40k'),
+        ('whaos', 'Warhammer: AoS'),
+        ('bl', 'Black Library'),
+        ('codex40k', 'Кодексы и материалы по 40K'),
+        ('codexaos', 'Кодексы и материалы по AoS'),
+    ], validators=[DataRequired()])
     button = SubmitField('Сохранить')

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warhammer Tashkent | {% block title %}{% endblock %}</title>
+
+    <meta name="description" content="Информационно-развлекательный портал для любителей вселенной Warhammer в Ташкенте!
+                                      Новости комюнити, события, обучение и многое другое">
+    <meta name="keyword" content="40k, warhammer, warhammer 40k, warhammer40k, aos, AoS, warhammerAoS, warhammer AoS
+                ваха, вархамер, вархаммер, Ташкент, Узбекистан, где поиграть">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='media/icons/Warhammer40k_uz_logo.png') }}">
+
+<!--bootstrap-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+
+<!--style-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .carousel-caption {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: left;
+        }
+        .carousel-item {
+            height: 500px;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+        .carousel-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0.9) 40%, rgba(0, 0, 0, 0) 100%);
+            z-index: 1;
+        }
+        .carousel-caption {
+            position: absolute;
+            z-index: 2;
+        }
+        .flip-image {
+            transform: scaleX(-1);
+        }
+        h1 {
+            font-family: 'Remark', sans-serif;
+        }
+    </style>
+
+<!--script-->
+    {% block script %}{% endblock %}
+</head>
+<body>
+<!--header-->
+    <div>
+        <nav class="head1 fixed-top fixed-top bg-black py-1" id="navbar">
+            <div class="row px-3">
+                <div class="image-container col-4 pt-2">
+                    <a href="/" class="d-flex align-items-center d-auto text-decoration-none">
+                        <img src="{{ url_for('static', filename='media/icons/warhammer_logo.png') }}" class="img-fluid pb-3" style="width: 100%;" alt="logo">
+                    </a>
+                </div>
+                <div class="col-4"></div>
+                <div class="col-4 d-flex gap-1 justify-content-end align-items-center pb-2">
+                    {% if current_user.is_authenticated %}
+                    <a href="/verify/logout" class="link-underline link-underline-opacity-0 link-underline-opacity-0-hover">
+                        <h6 class="text-light">Выйти</h6>
+                    </a>
+                    {% else %}
+                    <a href="/verify/login" class="link-underline link-underline-opacity-0 link-underline-opacity-0-hover">
+                        <h6 class="text-light">Войти</h6>
+                    </a>
+                    <p class="text-light pt-2">/</p>
+                    <a href="/verify/regis" class="link-underline link-underline-opacity-0 link-underline-opacity-0-hover">
+                        <h6 class="text-light">Регистрация</h6>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        <nav class="head2 navbar d-flex flex-wrap justify-content-between py-3 px-5 border-bottom" id="second-navbar">
+            <a class="nav-item nav-link link-body-emphasis link-underline link-underline-opacity-0 link-underline-opacity-0-hover"
+                href="/wh40k">Warhammer 40K
+            </a>
+            <a class="nav-item nav-link link-body-emphasis link-underline link-underline-opacity-0 link-underline-opacity-0-hover"
+                href="/whaos">Warhammer: AoS
+            </a>
+            <a class="nav-item nav-link link-body-emphasis link-underline link-underline-opacity-0 link-underline-opacity-0-hover"
+                href="/bl">Black Library
+            </a>
+            <a class="nav-item nav-link link-body-emphasis link-underline link-underline-opacity-0 link-underline-opacity-0-hover"
+                href="/gallery">Галерея
+            </a>
+            <a class="nav-item nav-link link-body-emphasis link-underline link-underline-opacity-0 link-underline-opacity-0-hover"
+                href="/guides">Гайды
+            </a>
+            <a class="nav-item nav-link link-body-emphasis link-underline link-underline-opacity-0 link-underline-opacity-0-hover"
+                href="/info">События
+            </a>
+            <a class="nav-item nav-link link-body-emphasis link-underline link-underline-opacity-0 link-underline-opacity-0-hover"
+                href="/about_us">О нас
+            </a>
+        </nav>
+    </div>
+
+<!-- main -->
+    {% block body %}{% endblock %}
+
+<!--footer-->
+    <div class="bg-black">
+        <footer class="container py-5">
+            <!-- row-1 -->
+            <div class="row justify-content-center px-5">
+
+                <a href="/wh40k" class="col-4 mb-3 align-items-center d-auto text-decoration-none">
+                    <img src="{{ url_for('static', filename='media/icons/wh40k_logo.png') }}" class="img-fluid">
+                </a>
+
+                <div class="col-4 mb-3"></div>
+
+                <a href="/whaos" class="col-4 mb-3 align-items-center d-auto text-decoration-none">
+                    <img src="{{ url_for('static', filename='media/icons/whaos_logo.png') }}" class="img-fluid" alt="">
+                </a>
+
+            </div>
+            <!-- row-2 -->
+             <div class="row flex-nowrap justify-content-between align-items-center border-top py-4 mb-5">
+                <div class="col-2"></div>
+                <div class="col-3">
+                    <a href="/" class="text-secondary link-underline link-underline-opacity-0 link-underline-opacity-0-hover">
+                        <h5>Warhammer Tashkent</h5>
+                    </a>
+                </div>
+                <div class="col-3 text-center">
+                    <a href="/about_us" class="text-secondary link-underline link-underline-opacity-0 link-underline-opacity-0-hover">
+                        <h5>О нас</h5>
+                    </a>
+                </div>
+                <div class="col-2 d-flex justify-content-end gap-4">
+                    <a href="https://t.me/+gdoEWZtWeA0wN2Iy" class="d-auto text-decoration-none pt-1" target="_blank">
+                        <img src="{{ url_for('static', filename='media/icons/telegram-100.png') }}" class="img-fluid" style="width: 35px; height: auto;">
+                    </a>
+                    <a href="https://www.youtube.com/@WarhammerTashkent" class="d-auto text-decoration-none" target="_blank">
+                        <img src="{{ url_for('static', filename='media/icons/youtube-100.png') }}" class="img-fluid" style="width: 40px; height: auto;">
+                    </a>
+                </div>
+                <div class="col-2"></div>
+             </div>
+        </footer>
+    </div>
+<!--scripts-->
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    {% block carousel %}{% endblock %}
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+        const secondNavbar = document.getElementById('second-navbar')
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > secondNavbar.offsetTop - 56) {
+                navbar.style.top = '-56px';
+            } else if (scrollTop < lastScrollTop) {
+                if (scrollTop < secondNavbar.offsetTop) {
+                    navbar.style.top = '0';
+                }
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const jumboContainer = document.querySelector('.jumbo');
+
+            jumboContainer.addEventListener('mouseenter', function () {
+                jumboContainer.classList.add('hovered');
+            });
+
+            jumboContainer.addEventListener('mouseleave', function () {
+                jumboContainer.classList.remove('hovered');
+            });
+        });
+    </script>
+    <script>
+        window.setTimeout(function() {
+            let alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                alert.classList.add('fade-out');
+        });
+    }, 2500);
+
+    document.addEventListener('animationend', function(event) {
+        if (event.target.classList.contains('fade-out')) {
+            event.target.style.display = 'none';
+        }
+    });
+    </script>
+
+    {% block init %}{% endblock %}
+</body>
+</html>

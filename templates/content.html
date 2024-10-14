@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Добавить контент
+{% endblock %}
+
+{% block body %}
+<div class="container text-center border-bottom mb-5 pt-4">
+    <h1>Добавить контент</h1>
+</div>
+
+<div class="container d-flex align-items-center">
+    <main class="form-control py-4 px-3 m-auto mb-5 bg-secondary-subtle">
+        <form method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <input type="hidden" name="next" value="{{ next }}">
+
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+
+            {{ form.title.label(class="mb-2") }}
+            {{ form.title(class="form-control mb-3") }}
+            {{ form.web_link.label(class="mb-2") }}
+            {{ form.web_link(class="form-control mb-3") }}
+            {{ form.image.label(class="mb-2") }}
+            {{ form.image(class="form-control mb-3") }}
+            {{ form.file.label(class="mb-2") }}
+            {{ form.file(class="form-control mb-3") }}
+            <div class="mb-4"></div>
+            {{ form.tag.label(class="mb-2") }}
+            {{ form.tag(class="form-control mb-4") }}
+            {{ form.button(class="btn btn-custom-black") }}
+        </form>
+    </main>
+</div>
+{% endblock %}
+
+{% block init %}
+    {% if delay %}
+        <script type="text/javascript">
+            setTimeout(function(){
+                window.location.href = "{{ next }}";
+            }, 2000);
+        </script>
+    {% endif %}
+{% endblock %}

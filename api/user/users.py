@@ -18,18 +18,18 @@ def users_db():
 def user_register():
     form = FormRegister()
     if request.method == 'POST' and form.validate_on_submit():
-        username = form.username.data
-        email = form.email.data
-        password = form.password.data
+        hashed_password = generate_password_hash(form.password.data)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
 
-        hashed_password = generate_password_hash(password)
-        user = User(username=username, email=email, password=hashed_password)
+        form.username.data = ''
+        form.email.data = ''
+        form.password.data = ''
 
         try:
             db.session.add(user)
             db.session.commit()
             login_user(user)
-            return redirect(url_for('home.home'))
+            return redirect(request.referrer)
         except Exception as e:
             db.session.rollback()
             flash(f'Произошла ошибка при регистрации: {str(e)}')
@@ -63,5 +63,6 @@ def user_login():
 @user_bp.route('/logout')
 @login_required
 def user_logout():
+    next_page = request.args.get('next')
     logout_user()
-    return redirect(url_for('home.home'))
+    return redirect(next_page or url_for('home.home'))

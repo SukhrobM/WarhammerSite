@@ -136,3 +136,7 @@
         opacity: 0;
     }
 }
+
+.navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=UTF8,%3Csvg xmlns%3D%27http%3A//www.w3.org/2000/svg%27 width%3D%2730%27 height%3D%2730%27 viewBox%3D%270 0 30 30%27%3E%3Cpath stroke%3D%27rgba%28255%2C 255%2C 255%2C 1%29%27 stroke-width%3D%272%27 d%3D%27M4 7h22M4 15h22M4 23h22%27/%3E%3C/svg%3E');
+}
