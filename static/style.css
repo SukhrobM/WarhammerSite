@@ -1,8 +1,44 @@
-@font-face {
-    font-family: Remark;
-    src: url("/static/fonts/Remark/LTRemark-Bold.otf") format("opentype");
-    font-weight: 600;
-    font-style: normal;
+h1 {
+    font-family: 'Remark', sans-serif;
+}
+
+.carousel-item {
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    top: 50%;
+    left: 50%;
+    transition: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: left;
+}
+
+.carousel-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0.9) 40%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
 }
 
 .head1 {
@@ -10,7 +46,7 @@
     top: 0px;
     width: 100%;
     position: fixed;
-    z-index: 1000;
+    z-index: 10;
     height: 56px;
 }
 
@@ -22,25 +58,11 @@
     z-index: 999;
 }
 
-.image-logo {
-    width: 30%;
-    transition: transform 0.3s ease;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-}
-
-.imgae-bottom {
-    height: auto;
-    width: 100%;
-    margin-top: -150px;
-    z-index: 1;
-    transition: transform 0.5s ease-in;
-}
-
 .jumbo {
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 400px;
     position: relative;
     overflow: hidden;
@@ -71,6 +93,24 @@
     transform: translate(-50%, -50%) scale(1.2);
 }
 
+.image-logo {
+    width: 30%;
+    transition: transform 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.imgae-bottom {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: transform 0.5s ease-in;
+}
+
 .image-title {
     height: auto;
     position: relative;
@@ -82,6 +122,7 @@
     height: auto;
     width: 100%;
     object-fit: cover;
+    position: relative;
     z-index: 1;
 }
 
@@ -97,6 +138,10 @@
     pointer-events: none;
     width: 100%;
     height: 100%;
+}
+
+.flip-image {
+    transform: scaleX(-1);
 }
 
 .btn-custom-black {
@@ -115,6 +160,11 @@
     background-color: #f2f2f2;
 }
 
+.btn-black{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
 .form-signin {
     max-width: 330px;
     padding: 1rem;
@@ -128,6 +178,46 @@
     animation: fadeOut 0.5s forwards;
 }
 
+.navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=UTF8,%3Csvg xmlns%3D%27http%3A//www.w3.org/2000/svg%27 width%3D%2730%27 height%3D%2730%27 viewBox%3D%270 0 30 30%27%3E%3Cpath stroke%3D%27rgba%28255%2C 255%2C 255%2C 1%29%27 stroke-width%3D%272%27 d%3D%27M4 7h22M4 15h22M4 23h22%27/%3E%3C/svg%3E');
+}
+
+.telegram{
+    height: auto;
+    width: 35px;
+}
+
+.youtube{
+    height: auto;
+    width: 40px;
+}
+.file-title{
+    font-size: 1.1rem;
+}
+
+.gallery-container{
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@font-face {
+    font-family: Remark;
+    src: url("/static/fonts/Remark/LTRemark-Bold.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+}
+
 @keyframes fadeOut {
     from {
         opacity: 1;
@@ -137,6 +227,101 @@
     }
 }
 
-.navbar-toggler-icon {
-    background-image: url('data:image/svg+xml;charset=UTF8,%3Csvg xmlns%3D%27http%3A//www.w3.org/2000/svg%27 width%3D%2730%27 height%3D%2730%27 viewBox%3D%270 0 30 30%27%3E%3Cpath stroke%3D%27rgba%28255%2C 255%2C 255%2C 1%29%27 stroke-width%3D%272%27 d%3D%27M4 7h22M4 15h22M4 23h22%27/%3E%3C/svg%3E');
+@media (max-width: 576px){
+    .flex-font h6{
+        font-size: 0.8rem;
+    }
+    .carousel-item{
+        max-height: 200px;
+
+    }
+    .carousel-caption {
+        top: 10%;
+        left: 30%;
+        transform: translate(-50%, 0%);
+        z-index: 2;
+        text-align: left;
+    }
+    .carousel-caption h5 {
+        font-size: 1rem;
+    }
+    .carousel-caption p {
+        font-size: 0.5rem;
+    }
+    .carousel-caption a {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    .jumbo{
+        height: 120px;
+        border-radius: 15px;
+    }
+    .image-logo{
+        font-size: 1.5rem;
+    }
+    .footer h5 {
+        font-size: 1rem;
+    }
+    .telegram{
+        height: auto;
+        width: 20px;
+    }
+    .youtube{
+        height: auto;
+        width: 25px;
+    }
+    .label h3 {
+        font-size: 1rem;
+    }
+    .file-title{
+        font-size: 0.8rem;
+        width: 83px;
+        height: 58px;
+        word-wrap: break-word;
+    }
+    .content a {
+        font-size: 0.6rem;
+        padding: 0.3rem 0.4rem;
+    }
+    .content button {
+        font-size: 0.6rem;
+        padding: 0.3rem 0.4rem;
+    }
+    .gallery-container{
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media(min-width: 576px) and (max-width: 768px){
+    .jumbo{
+        height: 200px;
+    }
+    .file-title{
+        font-size: 1rem;
+        width: 216px;
+        height: 48px;
+        word-wrap: break-word;
+    }
+}
+
+@media(min-width: 1440px){
+    .px-custom{
+        padding-left: 12rem;
+        padding-right: 12rem;
+    }
+    .footer h5 {
+        font-size: 2rem;
+    }
+    .head2 a {
+        font-size: 1.5rem;
+    }
+    .telegram{
+        height: auto;
+        width: 45px;
+    }
+    .youtube{
+        height: auto;
+        width: 60px;
+    }
 }

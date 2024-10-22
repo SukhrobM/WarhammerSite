@@ -5,36 +5,54 @@
 {% endblock %}
 
 {% block body %}
-<div class="mb-5"></div>
-<div class="container mb-5">
-    <div class="image-title text-center">
-        <img class="img-fluid image-title2" src="{{ url_for('static', filename='media/gallery/gallery.jpg') }}" style="height: auto; width: 50%; object-fit: cover; position: relative;" alt="">
+    <div class="mb-0 mb-sm-5"></div>
+    <!-- title -->
+    <div class="container mb-3 mb-sm-4">
+        <div class="image-title text-center">
+            <img class="img-fluid image-title2" src="{{ url_for('static', filename='media/gallery/gallery.jpg') }}" style="height: auto; width: 50%; object-fit: cover; position: relative;" alt="Галерея">
+        </div>
+        <div class="text-center justify-content-center border-bottom">
+            <h1 class="display-2 text-black w-100">Галерея</h1>
+        </div>
     </div>
-    <div class="text-center justify-content-center border-bottom">
-        <h1 class="display-2 text-black w-100">Галерея</h1>
-    </div>
-</div>
-
-<div class="album py-5 bg-body-tertiary">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for file in files %}
-        <div class="col">
-            <div class="card shadow-sm">
-                <img class="img-fluid" src="{{ url_for('gallery.uploaded_file', filename=file) }}">
+    <!-- image containers -->
+    <div class="album py-2 py-sm-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-0 g-sm-3">
+                {% for file in files %}
+                <div class="col d-flex justify-content-center">
+                    <div class="card shadow-sm gallery-container">
+                        <img class="img-fluid gallery-image" src="{{ url_for('gallery.uploaded_file', filename=file) }}" 
+                        data-bs-toggle="modal" data-bs-target="#imageModal"
+                        onclick="showImage('{{ url_for('gallery.uploaded_file', filename=file) }}')">
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
-      </div>
-
     </div>
-</div>
 
-{% if current_user.is_authenticated %}
-<div class="container mb-4">
-    <a role="button" class="btn btn-custom-black" href="/gallery/upload">Загрузить файл</a>
-</div>
-{% else %}
-{% endif %}
+    {% if current_user.is_authenticated %}
+    <div class="container mb-4">
+        <a role="button" class="btn btn-custom-black" href="/gallery/upload">Загрузить файл</a>
+    </div>
+    
+    {% endif %}
+    <!-- modal window -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-body">
+                <img id="modalImage" src="" class="img-fluid" alt="Просмотр изображения">
+            </div>
+        </div>
+    </div>
+
+    {% block init %}
+    <script>
+        function showImage(src) {
+            document.getElementById('modalImage').src = src;
+        }
+    </script>
+    {% endblock %}
+
 {% endblock %}

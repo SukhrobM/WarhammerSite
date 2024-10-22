@@ -70,6 +70,7 @@ def get_exact_article(id):
 @article_bp.route('/delete/<int:id>', methods=['POST', 'GET'])
 def delete_article(id):
     article_to_delete = Articles.query.get_or_404(id)
+    next_url = request.args.get('next') or request.referrer or url_for('home.home')
     try:
         db.session.delete(article_to_delete)
         db.session.commit()
@@ -77,7 +78,7 @@ def delete_article(id):
         return redirect(request.referrer)
     except Exception:
         flash('Произошла ошибка при удалении статьи')
-        return redirect(request.referrer)
+        return redirect(next_url)
 
 
 @article_bp.route('/upload_image', methods=['POST', 'GET'])

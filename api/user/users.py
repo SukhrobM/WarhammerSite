@@ -17,6 +17,7 @@ def users_db():
 @user_bp.route('/regis', methods=['POST', 'GET'])
 def user_register():
     form = FormRegister()
+    next_url = request.args.get('next') or request.referrer or url_for('home.home')
     if request.method == 'POST' and form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data)
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
@@ -29,7 +30,7 @@ def user_register():
             db.session.add(user)
             db.session.commit()
             login_user(user)
-            return redirect(request.referrer)
+            return redirect(next_url)
         except Exception as e:
             db.session.rollback()
             flash(f'Произошла ошибка при регистрации: {str(e)}')
@@ -41,6 +42,7 @@ def user_register():
 @user_bp.route('/login', methods=['POST', 'GET'])
 def user_login():
     form = FormLogin()
+    next_url = request.args.get('next') or request.referrer or url_for('home.home')
     if request.method == 'POST':
         email = form.email.data
         password = form.password.data
@@ -52,7 +54,7 @@ def user_login():
                 return render_template('registration/login.html', form=form)
             elif check_password_hash(user.password, password):
                 login_user(user)
-                return redirect(url_for('home.home'))
+                return redirect(next_url)
             else:
                 flash('Неправильные email-адрес или пароль')
                 return render_template('registration/login.html', form=form)

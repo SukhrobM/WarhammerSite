@@ -37,4 +37,5 @@ def upload_to_gallery():
 
 @gallery_bp.route('/upload/<filename>')
 def uploaded_file(filename):
-    return send_from_directory(current_app.config['UPLOAD_FOLDER'], filename)
+    file_directory = current_app.config['UPLOAD_FOLDER']
+    return send_from_directory(file_directory, filename)

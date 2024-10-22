@@ -5,13 +5,14 @@
 {% endblock %}
 
 {% block body %}
-<div class="mb-5"></div>
-<div class="container mb-5">
-    <div class="image-title text-center">
-        <img class="img-fluid image-title2" src="{{ url_for('static', filename='media/gallery/guides.jpg') }}" style="height: auto; width: 50%; object-fit: cover; position: relative;" alt="">
+    <div class="mb-0 mb-sm-5"></div>
+    <!-- title -->
+    <div class="container mb-3 mb-sm-4">
+        <div class="image-title text-center">
+            <img class="img-fluid image-title2" src="{{ url_for('static', filename='media/gallery/guides.jpg') }}" style="height: auto; width: 50%; object-fit: cover; position: relative;" alt="">
+        </div>
+        <div class="text-center justify-content-center border-bottom">
+            <h1 class="display-2 text-black w-100">Гайды</h1>
+        </div>
     </div>
-    <div class="text-center justify-content-center border-bottom">
-        <h1 class="display-2 text-black w-100">Гайды</h1>
-    </div>
-</div>
 {% endblock %}

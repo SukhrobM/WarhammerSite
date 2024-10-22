@@ -81,7 +81,6 @@ class ArticleForm(FlaskForm):
         ('wh40', 'Warhammer 40K'),
         ('whaos', 'Warhammer: AoS'),
         ('bl', 'Black Library'),
-        ('gallery', 'Галерея'),
         ('guides', 'Гайды'),
         ('events', 'События'),
         ('about', 'О нас'),
